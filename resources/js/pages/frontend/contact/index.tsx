@@ -19,7 +19,6 @@ import { Call, Message } from "iconsax-react";
 import React, { FormEvent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Send } from "react-iconly";
-import { v4 as uuidv4 } from "uuid";
 
 export function PageContact() {
     const ref = React.useRef<HTMLFormElement>(null);
@@ -45,7 +44,7 @@ export function PageContact() {
                 resource: "contacts",
                 method: "POST",
                 data: {
-                    id: uuidv4(),
+                    id: Math.random().toString(),
                     name,
                     email,
                     object,

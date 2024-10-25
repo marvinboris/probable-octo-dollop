@@ -2,8 +2,6 @@ import { selectAuth } from "./features/auth/authSlice";
 import { useAppSelector } from "./hooks";
 import { LayoutAdmin, LayoutFrontend } from "./layouts";
 import {
-    PageAdminApplications,
-    PageAdminApplicationsAdd,
     PageAdminAuthLogin,
     PageAdminCompanies,
     PageAdminCompaniesAdd,
@@ -47,14 +45,6 @@ export default function AppRoutes() {
                         <Route
                             path="/admin/profiles"
                             element={<PageAdminProfiles />}
-                        />
-                        <Route
-                            path="/admin/applications/add"
-                            element={<PageAdminApplicationsAdd />}
-                        />
-                        <Route
-                            path="/admin/applications"
-                            element={<PageAdminApplications />}
                         />
                         <Route path="/admin" element={<PageAdminDashboard />} />
                     </Route>
