@@ -1,21 +1,31 @@
-import './bootstrap';
-import '../css/app.css';
+import { ScrollToTop } from "./components";
+import "./index.css";
+import { LayoutApp } from "./layouts";
+import AppRoutes from "./routes";
+import "./services/i18n";
+import store from "./store";
 
-import { createRoot } from 'react-dom/client';
-import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+// Create a client
+const queryClient = new QueryClient();
 
-createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob('./Pages/**/*.tsx')),
-    setup({ el, App, props }) {
-        const root = createRoot(el);
-
-        root.render(<App {...props} />);
-    },
-    progress: {
-        color: '#4B5563',
-    },
-});
+createRoot(document.getElementById("app") || document.body).render(
+    // Provide the client to your App
+    <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+            <LayoutApp>
+                <BrowserRouter>
+                    <React.StrictMode>
+                        <ScrollToTop />
+                        <AppRoutes />
+                    </React.StrictMode>
+                </BrowserRouter>
+            </LayoutApp>
+        </Provider>
+    </QueryClientProvider>
+);
