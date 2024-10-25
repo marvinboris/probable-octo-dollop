@@ -14,7 +14,7 @@ export function PageHome() {
             <Testimonies />
             <WorkWithUs />
             <Faq />
-            <News />
+            {/* <News /> */}
             <ContactUs />
         </>
     );
