@@ -7,7 +7,7 @@ import { useAppSelector } from "@/hooks";
 import { selectAuth } from "@/features";
 import { cn, isApplicant } from "@/utils";
 import { useTranslation } from "react-i18next";
-import { Call } from "iconsax-react";
+import { Call, Whatsapp } from "iconsax-react";
 
 export function LayoutFrontend() {
     const { pathname } = useLocation();
@@ -51,6 +51,13 @@ export function LayoutFrontend() {
                 })}
             >
                 <Outlet />
+
+                <a
+                    href="https://wa.me/97523242218"
+                    className="fixed bottom-10 right-10 size-16 *:size-full bg-white rounded-full p-1 shadow"
+                >
+                    <Whatsapp variant="Bulk" className="text-primary" />
+                </a>
             </main>
 
             <Footer />

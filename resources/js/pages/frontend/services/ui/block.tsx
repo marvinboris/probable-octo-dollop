@@ -13,7 +13,7 @@ export default function Block({
     name,
 }: Service & { icon: typeof Iconly; index: number }) {
     const { t } = useTranslation();
-    
+
     return (
         <div className="border border-neutral-200 rounded-xl bg-white p-6 pr-16 overflow-clip relative transition-all duration-100 hover:shadow-lg">
             <div
@@ -25,7 +25,8 @@ export default function Block({
                         "text-danger",
                         "text-body",
                         "text-like",
-                    ][index % 5]
+                        "text-black",
+                    ][index % 6]
                 )}
             >
                 <Icon size={98} />

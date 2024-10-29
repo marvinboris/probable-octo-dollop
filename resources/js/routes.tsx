@@ -12,12 +12,8 @@ import {
     PageBlogDetails,
     PageContact,
     PageHome,
-    PageServiceEngineeringTraining,
-    PageServiceHR,
-    PageServiceInterim,
+    PageServiceEmiratesIdTyping,
     PageServices,
-    PageServiceService,
-    PageServiceTeam,
 } from "./pages";
 
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -55,30 +51,13 @@ export default function AppRoutes() {
 
             <Route path="" element={<LayoutFrontend />}>
                 <Route path="/contact" element={<PageContact />} />
-                <Route path="/careers" element={<Navigate to="/search" />} />
                 <Route
-                    path="/services/prestation-de-services"
-                    element={<PageServiceService />}
-                />
-                <Route
-                    path="/services/mise-a-disposition-du-personnel"
-                    element={<PageServiceTeam />}
-                />
-                <Route
-                    path="/services/interim-et-placement-des-travailleurs"
-                    element={<PageServiceInterim />}
-                />
-                <Route
-                    path="/services/conseil-rh"
-                    element={<PageServiceHR />}
-                />
-                <Route
-                    path="/services/ingenierie-de-formation"
-                    element={<PageServiceEngineeringTraining />}
+                    path="/services/emirates-id-typing"
+                    element={<PageServiceEmiratesIdTyping />}
                 />
                 <Route path="/blog/:slug" element={<PageBlogDetails />} />
                 <Route path="/blog" element={<PageBlog />} />
-                <Route path="/about/services" element={<PageServices />} />
+                <Route path="/services" element={<PageServices />} />
 
                 <Route path="" element={<PageHome />} />
 

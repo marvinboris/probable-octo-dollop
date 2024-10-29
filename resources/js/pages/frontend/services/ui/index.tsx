@@ -11,25 +11,17 @@ export default function Services() {
     if (loading) return <Loading />;
     return (
         <Section className="mt-24 lg:mt-0">
-            {/* <SectionTitle className="!text-center">
-                <Trans i18nKey="Our <1>services</1>">
-                    Our <span>services</span>
-                </Trans>
-            </SectionTitle> */}
-
             <div className="mt-4 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 lg:gap-y-9">
-                {services?.map((service, index) => (
-                    <Block
-                        key={"service-block-" + service.id + "-" + index}
-                        icon={
-                            [TwoUsers, TwoUsers, TwoUsers, TwoUsers, TwoUsers][
-                                index
-                            ]
-                        }
-                        index={index}
-                        {...service}
-                    />
-                ))}
+                {services
+                    ?.sort((a, b) => +a.id - +b.id)
+                    .map((service, index) => (
+                        <Block
+                            key={"service-block-" + service.id + "-" + index}
+                            icon={TwoUsers}
+                            index={index}
+                            {...service}
+                        />
+                    ))}
             </div>
         </Section>
     );

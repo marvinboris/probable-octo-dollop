@@ -106,7 +106,7 @@ export default function ContactUs() {
                 </form>
 
                 <div className="flex">
-                    <div className="mx-auto sm:w-[500px]">
+                    <div className="mx-auto w-full">
                         <iframe
                             title="Localisation"
                             className="h-80 w-full bg-white rounded-2xl"

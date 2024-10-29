@@ -8,6 +8,7 @@ export default function Right() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
+                className="size-full lg:size-auto -mt-12 lg:mt-0"
             >
                 <path
                     d="M65.0568 113.659C70.9886 106.006 70.0734 92.6768 56.9999 90.1183"
