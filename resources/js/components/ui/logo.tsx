@@ -54,7 +54,7 @@ export function Logo({
     ) : (
         <img
             src="/images/1449859aaab094b9feb6ddfe3050ebca.png"
-            width={props.width || 155}
+            width={props.width || 135}
             height={props.height}
             className="object-center"
         />

@@ -54,9 +54,9 @@ export function LayoutFrontend() {
 
                 <a
                     href="https://wa.me/97523242218"
-                    className="fixed bottom-10 right-10 size-16 *:size-full bg-white rounded-full p-1 shadow"
+                    className="fixed bottom-10 right-10 size-16 *:size-full bg-white rounded-full p-1 shadow transition-all duration-100 hover:scale-105"
                 >
-                    <Whatsapp variant="Bulk" className="text-primary" />
+                    <Whatsapp variant="Bold" className="text-primary" />
                 </a>
             </main>
 

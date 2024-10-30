@@ -19,7 +19,7 @@ export default function Block({
                 {title}
             </div>
 
-            <div className="w-5 h-2 bg-primary rounded-full mx-auto mt-7" />
+            <div className="w-5 h-2 bg-primary rounded-full mx-auto mt-5 mb-2" />
 
             <div className="text-sm text-center line-clamp-3">{body}</div>
         </div>

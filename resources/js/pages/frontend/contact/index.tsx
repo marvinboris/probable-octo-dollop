@@ -1,9 +1,11 @@
+import { useCountriesContext } from "@/contexts";
 import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
 import WhatsApp from "./icons/whatsapp";
 import {
     Alert,
     Button,
+    CountrySelect,
     CustomSelect,
     Header,
     Input,
@@ -21,7 +23,9 @@ import { Trans, useTranslation } from "react-i18next";
 import { Send } from "react-iconly";
 
 export function PageContact() {
+    const { defaultCode } = useCountriesContext();
     const ref = React.useRef<HTMLFormElement>(null);
+    const [code, setCode] = React.useState(defaultCode);
     const [loading, setLoading] = React.useState(false);
     const [message, setMessage] = React.useState<MessageType>();
     const { t } = useTranslation();
@@ -34,7 +38,9 @@ export function PageContact() {
         const name = form.get("name") as string;
         const email = form.get("email") as string;
         const object = form.get("object") as string;
-        const phone = form.get("phone") as string;
+        const phone = [code, form.get("phone") as string]
+            .filter(Boolean)
+            .join(" ");
         const message = form.get("message") as string;
 
         const handle = async () => {
@@ -93,21 +99,19 @@ export function PageContact() {
                                     type="email"
                                     name="email"
                                 />
-                                <CustomSelect
-                                    label={t("Your object")}
-                                    name="object"
-                                    options={[
-                                        {
-                                            value: "job",
-                                            label: "Recherche d'emploi",
-                                        },
-                                    ]}
-                                />
+                                <Input label={t("Your object")} name="object" />
                                 <Input
                                     label={t("Phone No.")}
                                     type="tel"
                                     name="phone"
                                     placeholder="54 100 0003"
+                                    addon={
+                                        <CountrySelect
+                                            name="code"
+                                            value={code}
+                                            onChange={setCode}
+                                        />
+                                    }
                                 />
                                 <TextArea
                                     label={t("Your message")}

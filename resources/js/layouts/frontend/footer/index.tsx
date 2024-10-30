@@ -82,39 +82,6 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
-
-                    <div className="mt-5">
-                        <FooterTitle>
-                            {t("Subscribe to newsletter")}
-                        </FooterTitle>
-                        <form
-                            onSubmit={onSubmit}
-                            className="flex items-center p-2.5 gap-3.5 rounded-xl bg-white/20 mt-4 max-w-80"
-                        >
-                            <Message className="size-5 ml-1" />
-
-                            <input
-                                name="email"
-                                type="email"
-                                ref={emailRef}
-                                placeholder={t("Your e-mail")}
-                                className="p-0 bg-transparent border-0 outline-none flex-1 min-w-0"
-                            />
-
-                            <Button size="sm" type="submit" disabled={loading}>
-                                {loading ? (
-                                    <div className="size-6 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                                ) : (
-                                    <>
-                                        <span className="hidden lg:inline-block">
-                                            {t("Subscribe")}
-                                        </span>
-                                        <Send size={24} />
-                                    </>
-                                )}
-                            </Button>
-                        </form>
-                    </div>
                 </div>
                 <div className="flex-1">
                     <FooterTitle>{t("Find us on Gmaps")}</FooterTitle>
