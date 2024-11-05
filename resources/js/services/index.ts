@@ -1,17 +1,8 @@
-import { API_URL } from "@/config";
 import {
-    Applicant,
-    Company,
-    CompanyActivity,
-    CompanyType,
     Contact,
-    Diploma,
     FAQ,
-    Job,
     News,
-    Request,
     Service,
-    SkillHR,
     Subscriber,
     TeamMember,
     Testimony,
@@ -20,18 +11,10 @@ import axios from "axios";
 
 type ToData<T> = T | T[];
 type ResUnit =
-    | Applicant
-    | Company
-    | CompanyActivity
-    | CompanyType
     | Contact
-    | Diploma
     | FAQ
-    | Job
     | News
-    | Request
     | Service
-    | SkillHR
     | Subscriber
     | TeamMember
     | Testimony;
@@ -77,7 +60,11 @@ export async function fetch<T extends RequestData>({
                 "/api/" +
                 (as ? as + "/" : "") +
                 resource.split("_").join("-") +
-                (method !== "POST" && body?.id ? `${body?.id}` : id || "")
+                (method !== "POST" && body?.id
+                    ? `${body?.id}`
+                    : id
+                    ? "/" + id
+                    : "")
             }${
                 params
                     ? `?${Object.entries(params)

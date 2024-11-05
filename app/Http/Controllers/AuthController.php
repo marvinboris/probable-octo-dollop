@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Mail\ResetLink;
 use App\Mail\Welcome;
 use App\Models\Admin;
-use App\Models\Applicant;
-use App\Models\Company;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

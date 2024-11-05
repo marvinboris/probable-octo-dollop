@@ -3,9 +3,7 @@ import MobileNav from "../ui/mobile-nav";
 import Nav from "../ui/nav";
 import Footer from "./footer";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { useAppSelector } from "@/hooks";
-import { selectAuth } from "@/features";
-import { cn, isApplicant } from "@/utils";
+import { cn } from "@/utils";
 import { useTranslation } from "react-i18next";
 import { Call, Whatsapp } from "iconsax-react";
 
@@ -47,7 +45,7 @@ export function LayoutFrontend() {
 
             <main
                 className={cn("flex-1 flex flex-col", {
-                    "overflow-x-hidden": pathname !== "/search",
+                    "overflow-hidden": pathname !== "/search",
                 })}
             >
                 <Outlet />

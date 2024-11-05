@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
-use App\Models\Applicant;
-use App\Models\Job;
 use Illuminate\Http\JsonResponse;
 
 class DashboardController extends Controller
 {
     public function index(): JsonResponse
     {
-        $totalCompanies = Company::count();
-        $totalApplicants = Applicant::count();
-        $totalJobs = Job::count();
+        $totalCompanies = 0;
+        $totalApplicants = 0;
+        $totalJobs = 0;
 
         return response()->json([
             'total_companies' => $totalCompanies,

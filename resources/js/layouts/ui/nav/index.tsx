@@ -10,7 +10,7 @@ export default function Nav() {
     const location = useLocation();
 
     return (
-        <nav className="flex flex-col lg:flex-row lg:items-center gap-3.5 font-display font-semibold">
+        <nav className="flex flex-col lg:flex-row lg:items-center gap-3.5 font-semibold">
             <Item exact href="/">
                 {t("Home")}
             </Item>

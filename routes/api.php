@@ -6,7 +6,7 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonyController;
-use App\Http\Controllers\Admin\CompanyController as AdminCompanyController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\JobController as AdminJobController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\AuthController;
@@ -24,8 +24,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-        Route::post('/jobs', [AdminJobController::class, 'store'])->name('jobs.store');
-        Route::post('/companies', [AdminCompanyController::class, 'store'])->name('companies.store');
+        Route::post('/services', [AdminServiceController::class, 'store'])->name('services.store');
+        Route::patch('/services/{id}', [AdminServiceController::class, 'update'])->name('services.update');
+        Route::get('/services/{id}', [AdminServiceController::class, 'edit'])->name('services.edit');
     });
 });
 

@@ -3,9 +3,15 @@ import { useLayoutAdminContext } from "../context";
 import NavItem from "./nav-item";
 import { Logo, Transition } from "@/components";
 import { useAppDispatch, useWindowSize } from "@/hooks";
-import { Building, Home, Logout, PathTool, Setting } from "iconsax-react";
+import {
+    BookSquare,
+    Building,
+    Home,
+    Logout,
+    PathTool,
+    Setting,
+} from "iconsax-react";
 import { useTranslation } from "react-i18next";
-import { Work } from "react-iconly";
 
 export default function SideDrawer() {
     const dispatch = useAppDispatch();
@@ -35,25 +41,9 @@ export default function SideDrawer() {
                             name={t("Dashboard")}
                         />
                         <NavItem
-                            href="/admin/applications"
-                            icon={Work}
-                            name={t("Applications")}
-                        />
-                        <NavItem
-                            href="/admin/profiles"
-                            icon={UserInformation}
-                            name={t("Applicant profiles")}
-                        />
-                        <NavItem
-                            href="/admin/companies"
-                            icon={Building}
-                            name={t("Manage companies")}
-                        />
-                        <NavItem
-                            href="/admin/trainings"
-                            exact
-                            icon={PathTool}
-                            name={t("Formations")}
+                            href="/admin/services"
+                            icon={BookSquare}
+                            name={"Manage services"}
                         />
                         <NavItem
                             href="/admin/settings"

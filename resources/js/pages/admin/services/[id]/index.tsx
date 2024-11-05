@@ -1,14 +1,17 @@
 import { Alert, Button, FormSteps, Loading } from "@/components";
-import { Step1, Step2 } from "./steps";
+import { Step1 } from "./steps";
 import React, { FormEvent } from "react";
 import { ArrowRight } from "react-iconly";
 import { selectAuth } from "@/features";
 import { useAppSelector } from "@/hooks";
 import { Message } from "@types";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
-export function PageAdminCompaniesAdd() {
+export function PageAdminServicesEdit() {
     const { t } = useTranslation();
+
+    const { id } = useParams();
 
     const { token } = useAppSelector(selectAuth);
     const formRef = React.useRef<HTMLFormElement>(null);
@@ -17,7 +20,7 @@ export function PageAdminCompaniesAdd() {
     const [message, setMessage] = React.useState<Message>();
     const [step, setStep] = React.useState(1);
     if (!token) return null;
-    const steps = [<Step1 key="step-1" />, <Step2 key="step-2" />];
+    const steps = [<Step1 key="step-1" />];
 
     const done = step === steps.length;
 
@@ -38,12 +41,10 @@ export function PageAdminCompaniesAdd() {
             data[key.split("[]").join("")] = value as string | string[] | null;
         }
 
-        console.log(data);
-
         setLoading(true);
         try {
-            const res = await fetch("/api/admin/companies", {
-                method: "POST",
+            const res = await fetch("/api/admin/services/" + id, {
+                method: "PATCH",
                 body: JSON.stringify(data),
                 headers: {
                     "Content-Type": "application/json",
@@ -56,11 +57,11 @@ export function PageAdminCompaniesAdd() {
             setMessage(
                 res.ok
                     ? {
-                          content: "Company created",
+                          content: "Service updated",
                           type: "success",
                       }
                     : {
-                          content: "Company creation failed",
+                          content: "Service update failed",
                           type: "danger",
                       }
             );
@@ -97,8 +98,6 @@ export function PageAdminCompaniesAdd() {
                     <ArrowRight size={20} />
                 </Button>
             </div>
-
-            <div className="mt-6 px-3 flex items-center">Step {step} of 2</div>
         </form>
     );
 }

@@ -2,11 +2,12 @@ import { selectAuth } from "./features/auth/authSlice";
 import { useAppSelector } from "./hooks";
 import { LayoutAdmin, LayoutFrontend } from "./layouts";
 import {
+    PageAbout,
     PageAdminAuthLogin,
-    PageAdminCompanies,
-    PageAdminCompaniesAdd,
     PageAdminDashboard,
-    PageAdminProfiles,
+    PageAdminServices,
+    PageAdminServicesAdd,
+    PageAdminServicesEdit,
     PageAdminSettings,
     PageBlog,
     PageBlogDetails,
@@ -31,16 +32,16 @@ export default function AppRoutes() {
                             element={<PageAdminSettings />}
                         />
                         <Route
-                            path="/admin/companies/add"
-                            element={<PageAdminCompaniesAdd />}
+                            path="/admin/services/add"
+                            element={<PageAdminServicesAdd />}
                         />
                         <Route
-                            path="/admin/companies"
-                            element={<PageAdminCompanies />}
+                            path="/admin/services/:id"
+                            element={<PageAdminServicesEdit />}
                         />
                         <Route
-                            path="/admin/profiles"
-                            element={<PageAdminProfiles />}
+                            path="/admin/services"
+                            element={<PageAdminServices />}
                         />
                         <Route path="/admin" element={<PageAdminDashboard />} />
                     </Route>
@@ -58,6 +59,7 @@ export default function AppRoutes() {
                 <Route path="/blog/:slug" element={<PageBlogDetails />} />
                 <Route path="/blog" element={<PageBlog />} />
                 <Route path="/services" element={<PageServices />} />
+                <Route path="/about" element={<PageAbout />} />
 
                 <Route path="" element={<PageHome />} />
 

@@ -6,7 +6,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\Language;
-use App\Models\Applicant;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -16,12 +15,6 @@ class UtilController extends Controller
     {
         $account = request()->user();
         switch ($account->token()->name) {
-            case Applicant::personalAccessToken():
-                $account = Applicant::find($account->id);
-                break;
-            case Company::personalAccessToken():
-                $account = Company::find($account->id);
-                break;
             case Admin::personalAccessToken():
                 $account = Admin::find($account->id);
                 break;
@@ -41,10 +34,6 @@ class UtilController extends Controller
     {
         $account = request()->user();
         switch ($account->token()->name) {
-            case Applicant::personalAccessToken():
-                return Applicant::find($account->id);
-            case Company::personalAccessToken():
-                return Company::find($account->id);
             case Admin::personalAccessToken():
                 return Admin::find($account->id);
         }
@@ -131,25 +120,7 @@ class UtilController extends Controller
         $data = array_merge($account->toArray(), [
             'notifications' => $account->notifications()->latest()->limit(5)->get(),
         ]);
-        if ($type === Applicant::type()) {
-            $role = $account->role;
-
-            $role_features = [];
-            foreach ($role->features as $feature) {
-                $role_features[] = [
-                    'id' => $feature->id,
-                    'prefix' => $feature->prefix,
-                    'permissions' => $feature->pivot->access,
-                ];
-            }
-
-            $role = $role->toArray();
-            $role['features'] = $role_features;
-
-            $data = $data + [
-                'role' => $role
-            ];
-        } else $data = array_merge($data, []);
+        $data = array_merge($data, []);
 
         return response()->json([
             'notification' => $notification,
